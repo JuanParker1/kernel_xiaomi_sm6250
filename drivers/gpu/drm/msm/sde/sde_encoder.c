@@ -2188,14 +2188,11 @@ static int _sde_encoder_resource_control_helper(struct drm_encoder *drm_enc,
 	struct sde_kms *sde_kms;
 	struct sde_encoder_virt *sde_enc;
 	int rc;
-	bool is_cmd_mode = false, is_primary;
+	bool is_primary;
 
 	sde_enc = to_sde_encoder_virt(drm_enc);
 	priv = drm_enc->dev->dev_private;
 	sde_kms = to_sde_kms(priv->kms);
-
-	if (sde_encoder_check_curr_mode(drm_enc, MSM_DISPLAY_CMD_MODE))
-		is_cmd_mode = true;
 
 	is_primary = sde_enc->disp_info.is_primary;
 
@@ -2230,7 +2227,6 @@ static int _sde_encoder_resource_control_helper(struct drm_encoder *drm_enc,
 
 		/* enable all the irq */
 		_sde_encoder_irq_control(drm_enc, true);
-
 	} else {
 		/* disable all the irq */
 		_sde_encoder_irq_control(drm_enc, false);
