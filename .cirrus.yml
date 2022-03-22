@@ -1,0 +1,19 @@
+env:
+    token: "ENCRYPTED[!8c8d79b81814fefe9b4919b2149eeb71b5c4d7deed373638c93fd428e9806cc215e120ac0f8bc4f84b768b51775f9bfb!]"
+    chat_id: "ENCRYPTED[!1917c5a15a5448fee430e3e4acf9315cb27c59265cfa78b348b08af59fde17f4c758807d4312f6f43191f3f537deaccc!]"
+    
+task:
+  name: "Velvet Kernel"
+  timeout_in: 2h
+  container:
+      image: ubuntu:jammy-20220130
+      cpu: 8
+      memory: 32G
+
+  Build_script:
+      - apt update && apt upgrade -y
+      - ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && date
+      - apt install -f -y git bison flex libxml2 libssl-dev bc zip default-jre python3 python3-pip wget curl cpio bash python2
+      - git clone --depth=1 https://github.com/Excalibur-99/sm6250_xiaomi XD && cd XD
+      - curl https://raw.githubusercontent.com/Excalibur-99/my-script/main/build.sh -o build
+      - bash build --aosp --lld
