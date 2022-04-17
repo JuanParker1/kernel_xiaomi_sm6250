@@ -16,7 +16,7 @@ jobs:
       - run: ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && date
       - run: apt install -f -y git bison flex libxml2 libssl-dev bc zip default-jre python3 python3-pip wget curl cpio bash python2
       - run: curl https://raw.githubusercontent.com/Excalibur-99/my-script/main/build.sh -o build
-      - run: bash build --aosp --lld
+      - run: bash build --neutron --lld
     env:
         token: ${{ secrets.TOKEN }}
         chat_id: ${{ secrets.CHAT_ID }}
