@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ LA.UM.9.1 ]
+    branches: [ Test ]
 jobs:
   node-docker:
     runs-on: ubuntu-latest
